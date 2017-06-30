@@ -17,8 +17,6 @@ services:
         - ./php-fpm/php${PHP_VERSION}.ini:/usr/local/etc/php/php.ini
       expose:
         - "9000"
-      depends_on:
-        - mysql
       extra_hosts:
         - "dockerhost:${DOCKER_HOST_IP}"
       environment:
@@ -84,4 +82,6 @@ networks:
 ### Volumes Setup #############################################
 volumes:
   mysql:
+    driver: "local"
+  phpmyadmin:
     driver: "local"
